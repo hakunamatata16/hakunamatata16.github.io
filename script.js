@@ -48,7 +48,15 @@ const qr = new QRCode(qrContainer, {
     height: 256
 });
 
-setInterval(() => {
+function update() {
 	qr.makeCode(getCode());
-}, 30_000);
+}
+
+setInterval(update, 30000);
+
+
+["classroom", "building"].forEach(id => {
+	document.getElementById(id).addEventListener("input", update);
+});
+
 

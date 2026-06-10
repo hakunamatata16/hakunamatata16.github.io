@@ -24,21 +24,30 @@
 		
 		<main>
 
-			<label for="building">Edificio</label>
-			<select id="building" name="building">
-				<option value="Lima 1">Lima 1</option>
-				<option value="Lima 2">Lima 2</option>
-				<option value="Lima 3">Lima 3</option>
-				<option value="Independencia 1">Independencia 1</option>
-				<option value="Independencia 2">Independencia 2</option>
-				<option value="Salta 1">Salta 1</option>
-				<option value="Chile 1">Chile 1</option>
-				<option value="Chile 2">Chile 2</option>
-				<option value="Chile 3">Chile 3</option>
-			</select>
+			<div>
 
-			<label for="quantity">Aula</label>
-			<input type="number" id="classroom" name="classroom" step="1" value="0">
+
+				<label for="building">Edificio</label>
+				<input list="buildings" id="building">
+
+				<datalist id="buildings">
+					<option value="Lima 1">
+					<option value="Lima 2">
+					<option value="Lima 3">
+					<option value="Chile 1">
+					<option value="Chile 2">
+					<option value="Chile 3">
+					<option value="Independencia 1">
+					<option value="Independencia 2">
+					<option value="Salta 1">
+				</datalist>
+
+
+
+				<label for="quantity">Aula</label>
+				<input type="number" id="classroom" name="classroom" step="1" value="0">
+
+			</div>
 
 			<div id="frame">
 				<div id="qrcode"></div>
