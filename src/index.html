@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title></title>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+		<script src="script.js" defer></script>
+
+		<style>
+			body {
+				background-color: black;
+			}
+
+			#frame {
+				background-color: white;
+				padding: 20px;
+				display: inline-block;
+			}
+
+			#qrcode {
+				padding: 40px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<header>
+
+		</header>
+		
+		<main>
+
+			<label for="building">Edificio</label>
+			<select id="building" name="building">
+				<option value="Lima 1">Lima 1</option>
+				<option value="Lima 2">Lima 2</option>
+				<option value="Lima 3">Lima 3</option>
+				<option value="Independencia 1">Independencia 1</option>
+				<option value="Independencia 2">Independencia 2</option>
+				<option value="Salta 1">Salta 1</option>
+				<option value="Chile 1">Chile 1</option>
+				<option value="Chile 2">Chile 2</option>
+				<option value="Chile 3">Chile 3</option>
+			</select>
+
+			<label for="quantity">Aula</label>
+			<input type="number" id="classroom" name="classroom" step="1" value="0">
+
+			<div id="frame">
+				<div id="qrcode"></div>
+			</div>
+
+		</main>
+
+		<footer>
+
+		</footer>
+
+	</body>
+
+</html>
