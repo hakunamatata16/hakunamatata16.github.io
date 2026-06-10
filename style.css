@@ -3,9 +3,13 @@ body {
 	background-color: #111111;
 }
 
+label {
+	color: white;
+}
+
 #frame {
 	background-color: white;
-	padding: 20px;
+	margin: 20px;
 	display: inline-block;
 }
 
