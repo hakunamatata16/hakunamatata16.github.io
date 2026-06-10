@@ -7,6 +7,10 @@ label {
 	color: white;
 }
 
+#inputs {
+	margin: 20px;
+}
+
 #frame {
 	background-color: white;
 	margin: 20px;
