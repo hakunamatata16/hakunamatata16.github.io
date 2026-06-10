@@ -50,5 +50,5 @@ const qr = new QRCode(qrContainer, {
 
 setInterval(() => {
 	qr.makeCode(getCode());
-}, 100);
+}, 30_000);
 
