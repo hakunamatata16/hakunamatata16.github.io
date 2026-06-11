@@ -55,6 +55,7 @@ function getCode() {
 
 function update() {
 	qr.makeCode(getCode());
+	setInputsToParams();
 }
 
 function setParamsToInputs() {
