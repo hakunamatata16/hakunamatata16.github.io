@@ -61,10 +61,10 @@ function setParamsToInputs() {
 
 	inputs.forEach(id => {
 
-		const value = params.get(input.id);
+		const value = params.get(id);
 
 		if (value !== null) {
-			input.value = value;
+			document.getElementById(id).value = value;
 		}
 	});
 }
@@ -92,7 +92,10 @@ setInterval(update, 30000);
 
 
 inputs.forEach(id => {
-	document.getElementById(id).addEventListener("input", update);
+	
+	const input = document.getElementById(id);
+
+	input.addEventListener("input", update);
 	input.addEventListener("input", setInputsToParams);
 });
 
