@@ -1,5 +1,16 @@
 
 
+const inputs = ["classroom", "building"];
+
+const qrContainer = document.getElementById("qrcode");
+const qr = new QRCode(qrContainer, {
+    text: getCode(),
+    width: 256,
+    height: 256
+});
+
+const params = new URLSearchParams(location.search);
+
 
 function formatDate(date) {
 
@@ -40,23 +51,48 @@ function getCode() {
 	)
 }
 
-const qrContainer = document.getElementById("qrcode");
 
-const qr = new QRCode(qrContainer, {
-    text: getCode(),
-    width: 256,
-    height: 256
-});
 
 function update() {
 	qr.makeCode(getCode());
 }
 
+function setParamsToInputs() {
+
+	inputs.forEach(id => {
+
+		const value = params.get(input.id);
+
+		if (value !== null) {
+			input.value = value;
+		}
+	});
+}
+
+function setInputsToParams() {
+	
+	const params = new URLSearchParams();
+
+    inputs.forEach(input => {
+        if (input.value !== "") {
+            params.set(input.id, input.value);
+        }
+    });
+
+    history.replaceState(
+        null,
+        "",
+        "?" + params.toString()
+    );
+}
+
 setInterval(update, 30000);
 
 
-["classroom", "building"].forEach(id => {
-	document.getElementById(id).addEventListener("input", update);
-});
 
+
+inputs.forEach(id => {
+	document.getElementById(id).addEventListener("input", update);
+	input.addEventListener("input", setInputsToParams);
+});
 
