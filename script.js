@@ -71,14 +71,21 @@ function setParamsToInputs() {
 }
 
 function setInputsToParams() {
+
+	console.log("hello world");
 	
 	const params = new URLSearchParams();
 
-    inputs.forEach(input => {
+    inputs.forEach(id => {
+	
+		const input = document.getElementById(id);
+
         if (input.value !== "") {
-            params.set(input.id, input.value);
+            params.set(id, input.value);
         }
     });
+
+	console.log(params.toString());
 
     history.replaceState(
         null,
