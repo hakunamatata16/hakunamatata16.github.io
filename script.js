@@ -88,12 +88,11 @@ function setInputsToParams() {
 
 setInterval(update, 30000);
 
+setParamsToInputs();
 
 inputs.forEach(id => {
-	
-	const input = document.getElementById(id);
 
-	setParamsToInputs();
+	const input = document.getElementById(id);
 
 	input.addEventListener("input", update);
 });
