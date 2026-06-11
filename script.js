@@ -55,6 +55,7 @@ function getCode() {
 
 function update() {
 	qr.makeCode(getCode());
+	setInputsToParams();
 }
 
 function setParamsToInputs() {
@@ -96,6 +97,5 @@ inputs.forEach(id => {
 	const input = document.getElementById(id);
 
 	input.addEventListener("input", update);
-	input.addEventListener("input", setInputsToParams);
 });
 
