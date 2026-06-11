@@ -55,7 +55,6 @@ function getCode() {
 
 function update() {
 	qr.makeCode(getCode());
-	setInputsToParams();
 }
 
 function setParamsToInputs() {
@@ -90,11 +89,11 @@ function setInputsToParams() {
 setInterval(update, 30000);
 
 
-
-
 inputs.forEach(id => {
 	
 	const input = document.getElementById(id);
+
+	setParamsToInputs();
 
 	input.addEventListener("input", update);
 });
