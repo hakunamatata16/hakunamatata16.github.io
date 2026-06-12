@@ -116,10 +116,7 @@ function setParams(classroom, building) {
 
 
 
-setParams(
-	document.getElementById("classroom").value,
-	document.getElementById("building").value
-);
+setParamsToInputs();
 
 setInterval(update, 30000);
 
