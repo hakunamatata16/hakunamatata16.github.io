@@ -68,6 +68,7 @@ function update() {
 
 	if (isValid(classroom.value, building.value)) {
 
+		console.log("updated as valid")
 		qr.makeCode(getCode());
 		qrContainer.classList.remove("hidden");
 		
