@@ -77,7 +77,7 @@ function update() {
 		);
 
 	} else {
-		qr.classList.add("hidden");
+		qrContainer.classList.add("hidden");
 	}
 }
 
