@@ -33,3 +33,7 @@ p {
 	padding: 40px;
 }
 
+.hidden {
+	display: none;
+}
+

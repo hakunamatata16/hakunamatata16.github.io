@@ -1,6 +1,6 @@
 
-
-const inputs = ["classroom", "building"];
+const classroom = document.getElementById("classroom");
+const building = document.getElementById("building");
 
 const qrContainer = document.getElementById("qrcode");
 const qr = new QRCode(qrContainer, {
@@ -32,10 +32,10 @@ function encode(classroom, building, datetime) {
 	const key = 'uade123';
 	let code = '';
 
-	for (let i = 0; i < text.length; i++) {
+	for (let index = 0; index < text.length; index++) {
 
-		const charCode = text.charCodeAt(i);
-		const keyCode = key.charCodeAt(i % key.length);
+		const charCode = text.charCodeAt(index);
+		const keyCode = key.charCodeAt(index % key.length);
 
 		code += (charCode ^ keyCode).toString(16).padStart(2, '0');
 	}
@@ -51,57 +51,75 @@ function getCode() {
 	)
 }
 
-
+function isValid(classroom, building) {
+	return
+		classroom != ""
+		&& !classroom.includes("|")
+		&& !classroom.includes(" ")
+		&& building != ""
+		&& !building.includes("|");
+}
 
 function update() {
-	qr.makeCode(getCode());
-	setInputsToParams();
+
+	const classroom = document.getElementById("classroom");
+	const building = document.getElementById("building");
+
+	if (isValid(classroom.value, building.value)) {
+
+		qr.makeCode(getCode());
+		qr.classList.remove("hidden");
+		
+		setParams(
+			classroom.value,
+			building.value
+		);
+
+	} else {
+		qr.classList.add("hidden");
+	}
 }
 
 function setParamsToInputs() {
 
-	inputs.forEach(id => {
+	[classroom, building].forEach(input => {
 
-		const value = params.get(id);
+		const value = params.get(input.id);
 
 		if (value !== null) {
-			document.getElementById(id).value = value;
+			input.value = value;
 		}
 	});
 }
 
-function setInputsToParams() {
+function setParams(classroom, building) {
 
-	console.log("hello world");
-	
-	const params = new URLSearchParams();
+	let path;
 
-    inputs.forEach(id => {
-	
-		const input = document.getElementById(id);
+	if (isValid(classroom, building)) {
 
-        if (input.value !== "") {
-            params.set(id, input.value);
-        }
-    });
+		const params = new URLSearchParams();
 
-	console.log(params.toString());
+		params.set("classroom", classroom);
+		params.set("building", building);
 
-    history.replaceState(
-        null,
-        "",
-        "?" + params.toString()
-    );
+		path = "?" + params.toString();
+
+	} else {
+		path = "/";
+	}
+
+    history.replaceState(null, "", path);
 }
+
+
+
+setParams(
+	document.getElementById("classroom").value,
+	document.getElementById("building").value
+);
 
 setInterval(update, 30000);
 
-setParamsToInputs();
-
-inputs.forEach(id => {
-
-	const input = document.getElementById(id);
-
-	input.addEventListener("input", update);
-});
+[classroom, building].forEach(input => input.addEventListener("input", update));
 
