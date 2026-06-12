@@ -52,12 +52,13 @@ function getCode() {
 }
 
 function isValid(classroom, building) {
-	return
+	return (
 		classroom != ""
 		&& !classroom.includes("|")
 		&& !classroom.includes(" ")
 		&& building != ""
-		&& !building.includes("|");
+		&& !building.includes("|")
+	);
 }
 
 function update() {
@@ -68,7 +69,7 @@ function update() {
 	if (isValid(classroom.value, building.value)) {
 
 		qr.makeCode(getCode());
-		qr.classList.remove("hidden");
+		qrContainer.classList.remove("hidden");
 		
 		setParams(
 			classroom.value,
