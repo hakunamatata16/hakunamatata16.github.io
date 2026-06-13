@@ -89,19 +89,15 @@ function update() {
 
 function setParamsToInputs() {
 
-	[classroom, building].forEach(input => {
-
-		const value = params.get(input.id);
-
-		if (value !== null) {
-			input.value = value;
-		}
-	});
+	[classroom, building].forEach(
+		input => input.value = params.get(input.id)
+	);
 }
 
 
 
 setParamsToInputs();
+update();
 
 setInterval(update, 30000);
 
