@@ -72,10 +72,9 @@ function update() {
 
 
 		const params = new URLSearchParams();
-		params.set("classroom", classroom.value);
 		params.set("building", building.value);
+		params.set("classroom", classroom.value);
 		path = "?" + params.toString();
-		
 
 	} else {
 
