@@ -45,10 +45,10 @@ function encode(classroom, building, datetime) {
 
 function getCode() {
 	return encode(
-		document.getElementById("classroom").value,
-		document.getElementById("building").value,
+		classroom.value,
+		building.value,
 		formatDate(new Date())
-	)
+	);
 }
 
 function isValid(classroom, building) {
@@ -63,23 +63,28 @@ function isValid(classroom, building) {
 
 function update() {
 
-	const classroom = document.getElementById("classroom");
-	const building = document.getElementById("building");
+	let path;
 
 	if (isValid(classroom.value, building.value)) {
 
-		console.log("updated as valid")
 		qr.makeCode(getCode());
 		qrContainer.classList.remove("hidden");
+
+
+		const params = new URLSearchParams();
+		params.set("classroom", classroom.value);
+		params.set("building", building.value);
+		path = "?" + params.toString();
 		
-		setParams(
-			classroom.value,
-			building.value
-		);
 
 	} else {
+
 		qrContainer.classList.add("hidden");
+		
+		path = "/";
 	}
+
+    history.replaceState(null, "", path);
 }
 
 function setParamsToInputs() {
@@ -92,26 +97,6 @@ function setParamsToInputs() {
 			input.value = value;
 		}
 	});
-}
-
-function setParams(classroom, building) {
-
-	let path;
-
-	if (isValid(classroom, building)) {
-
-		const params = new URLSearchParams();
-
-		params.set("classroom", classroom);
-		params.set("building", building);
-
-		path = "?" + params.toString();
-
-	} else {
-		path = "/";
-	}
-
-    history.replaceState(null, "", path);
 }
 
 
